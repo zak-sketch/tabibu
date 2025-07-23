@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabibu Jay Safari - Luxury Wildlife Retreat</title>
+    <title>Tabibu Jay Safari Lodge | Luxury Kenya Safari Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -19,6 +19,8 @@
             --accent: #8b4513;
             --light: #f8f5f0;
             --dark: #222;
+            --safari-red: #c53d13;
+            --safari-brown: #8b5d2e;
         }
         
         body {
@@ -26,6 +28,8 @@
             color: #333;
             line-height: 1.6;
             background-color: #f9f9f9;
+            position: relative;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
@@ -41,12 +45,13 @@
         
         /* Header Styles */
         header {
-            background-color: var(--primary);
+            background-color: rgba(26, 71, 42, 0.95);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -60,10 +65,18 @@
             font-size: 28px;
             font-weight: 700;
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
             color: var(--secondary);
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
         }
         
         nav ul {
@@ -80,50 +93,92 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            position: relative;
         }
         
-        nav ul li a:hover {
-            color: var(--secondary);
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
         }
         
         .cta-button {
             background-color: var(--secondary);
             color: var(--primary);
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 4px;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
         
         .cta-button:hover {
             background-color: #c19b2e;
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
         }
         
         /* Hero Section */
         .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            height: 95vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/african-leopard.png');
+            opacity: 0.1;
+            pointer-events: none;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
@@ -134,62 +189,225 @@
             background-color: var(--secondary);
             color: var(--primary);
             display: inline-block;
-            padding: 10px 25px;
+            padding: 12px 30px;
             font-size: 1.8rem;
             font-weight: 700;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
         }
         
         /* Property Details */
         .property-details {
-            padding: 60px 0;
+            padding: 80px 0;
             background-color: var(--light);
+            position: relative;
+        }
+        
+        .kenya-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/african-kente.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #555;
         }
         
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
         
         .detail-card {
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(139, 69, 19, 0.1);
         }
         
         .detail-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .detail-card .card-front {
+            transition: all 0.4s ease;
+        }
+        
+        .detail-card .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+        
+        .detail-card.expanded .card-front {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .detail-card.expanded .card-back {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .detail-card i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
         }
         
         .detail-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .detail-card .card-back h3 {
+            color: var(--safari-red);
+            margin-bottom: 15px;
+        }
+        
+        .card-back ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .card-back ul li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .card-back ul li:before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .card-back .price {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 15px 0;
+            text-align: center;
         }
         
         /* Tabs Section */
         .tabs-section {
-            padding: 60px 0;
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #f8f5f0, #e8e0d1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tabs-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            opacity: 0.2;
+            pointer-events: none;
         }
         
         .tabs-header {
             display: flex;
             border-bottom: 2px solid #ddd;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .tab-btn {
-            padding: 15px 30px;
+            padding: 18px 35px;
             background: none;
             border: none;
             font-size: 1.1rem;
@@ -197,6 +415,13 @@
             cursor: pointer;
             color: #777;
             position: relative;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tab-btn:hover {
+            color: var(--primary);
         }
         
         .tab-btn.active {
@@ -215,6 +440,12 @@
         
         .tab-content {
             display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .tab-content.active {
@@ -224,151 +455,417 @@
         .overview-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
         }
         
         .overview-image {
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            height: 450px;
         }
         
         .overview-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .overview-image:hover img {
+            transform: scale(1.05);
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
         
         .feature-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
         .feature-item i {
             color: var(--secondary);
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            min-width: 30px;
         }
         
         .map-container {
-            height: 400px;
+            height: 450px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background-color: #e9e9e9;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1598880940080-ff9a29891b85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #777;
+            color: white;
+            position: relative;
+        }
+        
+        .map-overlay {
+            background: rgba(26, 71, 42, 0.85);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .map-overlay h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
         
         .contact-form {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 500;
+            color: var(--primary);
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        /* Safari Packages */
+        .safari-packages {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #e8e0d1, #d8d0c1);
+            position: relative;
+        }
+        
+        .safari-packages::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/leather-1.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .package-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-content {
+            padding: 30px;
+        }
+        
+        .package-content h3 {
+            color: var(--safari-red);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .package-price {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .package-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .package-features li:before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 10px;
         }
         
         /* Footer */
         footer {
             background-color: var(--primary);
             color: var(--light);
-            padding: 60px 0 20px;
+            padding: 80px 0 20px;
+            position: relative;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 50px;
         }
         
         .footer-section h3 {
             color: var(--secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
         }
         
         .footer-links a {
             display: block;
             color: #ddd;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .footer-links a:hover {
             color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 99;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-            }
-            
+        @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
             
             .overview-grid {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
             
             .tabs-header {
-                flex-wrap: wrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 85vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .price-tag {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254700194262" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <a href="#" class="logo">Tabibu <span>Jay</span> Safari</a>
+            <a href="#" class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48cmVjdCB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0iIzFhNDcyYSIvPjxwYXRoIGQ9Ik0xMjgsMjRBMTEwLDExMCAwIDEsMSAxOCwxMzRhMTEwLDExMCAwIDAsMSAxMTAtMTEwWiIgZmlsbD0iI2Q0YWYzNyIvPjxjaXJjbGUgY3g9IjEwNCIgY3k9IjEwNCIgcj0iMjQiIGZpbGw9IiMxYTQ3MmEiLz48Y2lyY2xlIGN4PSIxNTIiIGN5PSIxMDQiIHI9IjI0IiBmaWxsPSIjMWE0NzJhIi8+PHBhdGggZD0iTTE2NCwxNjBhMTYsMTYgMCAwLDEgLTMyLDBaIiBmaWxsPSIjMWE0NzJhIi8+PC9zdmc+" alt="Tabibu Jay Logo">
+                Tabibu <span>Jay</span> Safari
+            </a>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Properties</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Safari Packages</a></li>
+                    <li><a href="#">Accommodation</a></li>
+                    <li><a href="#">Gallery</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="cta-button">Book Now</a></li>
+                    <li><a href="#" class="cta-button"><i class="fas fa-calendar-check"></i> Book Now</a></li>
                 </ul>
             </nav>
         </div>
@@ -377,37 +874,105 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Luxury Wildlife Retreat</h1>
-            <p>Experience the untamed beauty of Africa in unparalleled luxury at Tabibu Jay Safari Lodge</p>
-            <div class="price-tag">From $450/night</div>
-            <a href="#" class="cta-button">Schedule a Tour</a>
+            <h1>Experience <span>Kenya's</span> Wild Heart</h1>
+            <p>Luxury safari lodge in the heart of Maasai Mara, offering unparalleled wildlife experiences and authentic Kenyan hospitality</p>
+            <div class="price-tag">From Ksh 45,000 / night</div>
+            <div class="hero-btns">
+                <a href="#" class="cta-button"><i class="fas fa-calendar-alt"></i> Check Availability</a>
+                <a href="https://wa.me/254700194262" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp +254 700 194262
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Property Details -->
     <section class="property-details">
+        <div class="kenya-pattern"></div>
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">Property Highlights</h2>
+            <div class="section-title">
+                <h2>Lodge Features & Accommodations</h2>
+                <p>Experience luxury in the wild with our exclusive amenities and unique safari experiences</p>
+            </div>
             <div class="details-grid">
                 <div class="detail-card">
-                    <i class="fas fa-bed"></i>
-                    <h3>Luxury Suites</h3>
-                    <p>8 spacious suites with private decks and breathtaking views</p>
+                    <div class="card-front">
+                        <i class="fas fa-bed"></i>
+                        <h3>Luxury Safari Tents</h3>
+                        <p>Spacious tents with private decks overlooking the savannah</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Luxury Safari Tents</h3>
+                        <p>Our premium safari tents blend luxury with authentic wilderness experience. Each tent features:</p>
+                        <ul>
+                            <li>King-size beds with premium linens</li>
+                            <li>Private viewing decks with savannah views</li>
+                            <li>En-suite bathrooms with rain showers</li>
+                            <li>Solar-powered electricity</li>
+                            <li>24-hour butler service</li>
+                        </ul>
+                        <div class="price">Ksh 55,000 / night</div>
+                        <button class="cta-button">Book This Accommodation</button>
+                    </div>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3>Prime Location</h3>
-                    <p>Located in the heart of Maasai Mara, Kenya</p>
+                    <div class="card-front">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Gourmet Dining</h3>
+                        <p>Farm-to-table cuisine with Kenyan flavors</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Gourmet Dining Experience</h3>
+                        <p>Indulge in culinary excellence with our award-winning chefs:</p>
+                        <ul>
+                            <li>Daily bush breakfasts and sundowners</li>
+                            <li>Traditional Kenyan dishes with modern twist</li>
+                            <li>Vegetarian and special diet options</li>
+                            <li>Private dining under the stars</li>
+                            <li>Selection of premium African wines</li>
+                        </ul>
+                        <button class="cta-button">View Sample Menu</button>
+                    </div>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Gourmet Dining</h3>
-                    <p>Fine dining with locally sourced ingredients</p>
+                    <div class="card-front">
+                        <i class="fas fa-binoculars"></i>
+                        <h3>Wildlife Safaris</h3>
+                        <p>Expert-guided game drives and bush walks</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Wildlife Safaris</h3>
+                        <p>Experience the best of Maasai Mara with our expert guides:</p>
+                        <ul>
+                            <li>Twice-daily game drives in custom vehicles</li>
+                            <li>Walking safaris with Maasai warriors</li>
+                            <li>Hot air balloon safaris at sunrise</li>
+                            <li>Photography workshops</li>
+                            <li>Night drives with spotlights</li>
+                        </ul>
+                        <div class="price">Ksh 12,000 / person</div>
+                        <button class="cta-button">Book Safari Experience</button>
+                    </div>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-binoculars"></i>
-                    <h3>Wildlife Safaris</h3>
-                    <p>Daily guided game drives with expert trackers</p>
+                    <div class="card-front">
+                        <i class="fas fa-spa"></i>
+                        <h3>Wilderness Spa</h3>
+                        <p>Rejuvenate with nature-inspired treatments</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Wilderness Spa</h3>
+                        <p>Our open-air spa offers treatments inspired by Kenyan traditions:</p>
+                        <ul>
+                            <li>Maasai-inspired massage therapies</li>
+                            <li>Natural plant-based products</li>
+                            <li>Yoga sessions at sunrise</li>
+                            <li>Reflexology and aromatherapy</li>
+                            <li>Private wellness consultations</li>
+                        </ul>
+                        <div class="price">Ksh 8,500 / treatment</div>
+                        <button class="cta-button">Book Spa Session</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -429,11 +994,14 @@
                     <div>
                         <h2>Experience Wilderness in Luxury</h2>
                         <p style="margin: 20px 0;">Tabibu Jay Safari Lodge offers an exclusive African safari experience combining luxury accommodation with authentic wildlife encounters. Nestled on a private concession bordering the Maasai Mara National Reserve, our lodge provides an intimate setting with unparalleled access to the Big Five.</p>
-                        <p>Each of our eight luxury suites is designed to immerse you in nature while providing every modern comfort. Floor-to-ceiling glass doors open onto private decks with panoramic views of the savannah, where you can watch wildlife from the privacy of your room.</p>
-                        <p>Our expert guides lead twice-daily game drives in custom safari vehicles, ensuring you have the best opportunities to witness the Great Migration, predator-prey interactions, and the diverse ecosystems of the Mara.</p>
+                        <p>Each of our luxury safari tents is designed to immerse you in nature while providing every modern comfort. Floor-to-ceiling mesh windows open onto private decks with panoramic views of the savannah, where you can watch wildlife from the privacy of your tent.</p>
+                        <p>Our expert Maasai guides lead twice-daily game drives in custom safari vehicles, ensuring you have the best opportunities to witness the Great Migration, predator-prey interactions, and the diverse ecosystems of the Mara.</p>
+                        <div style="margin-top: 30px;">
+                            <a href="#" class="cta-button"><i class="fas fa-book-open"></i> View Gallery</a>
+                        </div>
                     </div>
                     <div class="overview-image">
-                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Safari Suite">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Safari Tent">
                     </div>
                 </div>
             </div>
@@ -441,75 +1009,60 @@
             <!-- Features Tab -->
             <div id="features" class="tab-content">
                 <div class="features-grid">
-                    <div>
-                        <h3>Accommodation Features</h3>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>King-size canopy beds with premium linens</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Private viewing decks</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>En-suite bathrooms with rain showers</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Climate control</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>In-room safe</span>
+                    <div class="feature-item">
+                        <i class="fas fa-swimming-pool"></i>
+                        <div>
+                            <h4>Infinity Pool</h4>
+                            <p>Stunning pool overlooking the savannah, perfect for relaxing between game drives</p>
                         </div>
                     </div>
-                    
-                    <div>
-                        <h3>Lodge Facilities</h3>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Infinity pool overlooking the savannah</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Spa and wellness center</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Curated library and lounge</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Bush dining experiences</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Cultural interactions with Maasai community</span>
+                    <div class="feature-item">
+                        <i class="fas fa-fire"></i>
+                        <div>
+                            <h4>Bush Fireplace</h4>
+                            <p>Evening gatherings around the fire with traditional storytelling</p>
                         </div>
                     </div>
-                    
-                    <div>
-                        <h3>Safari Experiences</h3>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Twice-daily game drives</span>
+                    <div class="feature-item">
+                        <i class="fas fa-wifi"></i>
+                        <div>
+                            <h4>Complimentary WiFi</h4>
+                            <p>Stay connected with high-speed internet throughout the lodge</p>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Hot air balloon safaris</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <h4>Cultural Center</h4>
+                            <p>Learn about Maasai culture and traditions at our on-site cultural center</p>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Guided bush walks</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-child"></i>
+                        <div>
+                            <h4>Family Friendly</h4>
+                            <p>Special programs and activities for children of all ages</p>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Photography workshops</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <div>
+                            <h4>Eco-Conscious</h4>
+                            <p>Sustainable lodge with solar power and water conservation systems</p>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Birdwatching excursions</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-camera"></i>
+                        <div>
+                            <h4>Photography Hide</h4>
+                            <p>Specially designed hide for wildlife photography near watering hole</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <h4>Safari Library</h4>
+                            <p>Extensive collection of wildlife books and reference materials</p>
                         </div>
                     </div>
                 </div>
@@ -521,13 +1074,17 @@
                 <p style="margin: 20px 0;">Our lodge is strategically located on a private 50,000-acre conservancy bordering the Maasai Mara National Reserve. This privileged position allows exclusive access to wildlife viewing without the crowds, while still being close to the main reserve for witnessing the Great Migration.</p>
                 
                 <div class="map-container">
-                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 15px;"></i>
-                    <h3>Tabibu Jay Safari Lodge Location Map</h3>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h3>Access Information</h3>
-                    <p>We're accessible via scheduled flights from Nairobi Wilson Airport to our private airstrip (45-minute flight). Transfers from the airstrip to the lodge take approximately 20 minutes.</p>
+                    <div class="map-overlay">
+                        <h3>Tabibu Jay Safari Lodge Location</h3>
+                        <p>Olare Motorogi Conservancy, Maasai Mara, Kenya</p>
+                        <p style="margin-top: 15px;">
+                            <i class="fas fa-phone"></i> +254 700 194262 &nbsp; | &nbsp;
+                            <i class="fab fa-whatsapp"></i> +254 700 194262
+                        </p>
+                        <div style="margin-top: 20px;">
+                            <a href="#" class="cta-button"><i class="fas fa-map-marked-alt"></i> Get Directions</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -554,24 +1111,109 @@
                                 <input type="text" id="dates" placeholder="DD/MM/YYYY - DD/MM/YYYY">
                             </div>
                             <div class="form-group">
+                                <label for="guests">Number of Guests</label>
+                                <input type="number" id="guests" min="1" max="20">
+                            </div>
+                            <div class="form-group">
                                 <label for="message">Special Requests</label>
                                 <textarea id="message" rows="4"></textarea>
                             </div>
-                            <button type="submit" class="cta-button" style="width: 100%;">Send Inquiry</button>
+                            <button type="submit" class="cta-button" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Inquiry
+                            </button>
                         </form>
                     </div>
                     <div>
                         <h2>Contact Our Safari Specialists</h2>
-                        <p style="margin: 20px 0;">Our team is ready to help you plan your dream safari adventure at Tabibu Jay Safari Lodge.</p>
+                        <p style="margin: 20px 0;">Our team is ready to help you plan your dream safari adventure at Tabibu Jay Safari Lodge. We're available 24/7 to answer your questions.</p>
                         
                         <div style="margin-top: 30px;">
                             <h3>Reservations Office</h3>
-                            <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +254 712 345 678</p>
-                            <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> reservations@tabibujaysafari.com</p>
+                            <p><i class="fas fa-phone"></i> +254 700 194262</p>
+                            <p><i class="fab fa-whatsapp"></i> +254 700 194262</p>
+                            <p><i class="fas fa-envelope"></i> reservations@tabibujaysafari.com</p>
                             
                             <h3 style="margin-top: 30px;">Lodge Address</h3>
-                            <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Olare Motorogi Conservancy<br>Maasai Mara, Kenya</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Olare Motorogi Conservancy<br>Maasai Mara, Kenya</p>
+                            
+                            <h3 style="margin-top: 30px;">Office Hours</h3>
+                            <p><i class="fas fa-clock"></i> Monday - Sunday: 8:00 AM - 8:00 PM EAT</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safari Packages -->
+    <section class="safari-packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Safari Packages</h2>
+                <p>Experience the best of Kenya with our specially curated safari adventures</p>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1619983081563-430f63602ef3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Great Migration Safari">
+                    </div>
+                    <div class="package-content">
+                        <h3>Great Migration Safari</h3>
+                        <p>Witness the spectacular wildebeest migration in Maasai Mara with our 5-day luxury safari package.</p>
+                        <div class="package-price">Ksh 185,000 / person</div>
+                        <ul class="package-features">
+                            <li>5 days / 4 nights luxury accommodation</li>
+                            <li>Daily game drives in private conservancy</li>
+                            <li>Hot air balloon safari experience</li>
+                            <li>All meals and premium beverages</li>
+                            <li>Maasai cultural village visit</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">
+                            <i class="fas fa-info-circle"></i> Package Details
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Big Five Safari">
+                    </div>
+                    <div class="package-content">
+                        <h3>Big Five Adventure</h3>
+                        <p>7-day safari focusing on spotting the Big Five across multiple Kenyan national parks.</p>
+                        <div class="package-price">Ksh 245,000 / person</div>
+                        <ul class="package-features">
+                            <li>7 days / 6 nights in luxury lodges</li>
+                            <li>Visits to Maasai Mara, Amboseli & Tsavo</li>
+                            <li>Professional photography guide</li>
+                            <li>All domestic flights included</li>
+                            <li>Bush dinners and sundowners</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">
+                            <i class="fas fa-info-circle"></i> Package Details
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Honeymoon Safari">
+                    </div>
+                    <div class="package-content">
+                        <h3>Romantic Honeymoon Safari</h3>
+                        <p>10-day luxury safari and beach experience perfect for honeymooners and couples.</p>
+                        <div class="package-price">Ksh 325,000 / person</div>
+                        <ul class="package-features">
+                            <li>5 nights safari + 5 nights beach resort</li>
+                            <li>Private game drives and bush walks</li>
+                            <li>Romantic dinners under the stars</li>
+                            <li>Spa treatments for couples</li>
+                            <li>Dhow cruise in Lamu archipelago</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">
+                            <i class="fas fa-info-circle"></i> Package Details
+                        </a>
                     </div>
                 </div>
             </div>
@@ -584,27 +1226,37 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Tabibu Jay Safari</h3>
-                    <p>Luxury safari experiences in the heart of Africa's most iconic wildlife destinations.</p>
+                    <p>Luxury safari experiences in the heart of Africa's most iconic wildlife destinations. Creating unforgettable Kenyan adventures since 2005.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <div class="footer-links">
                         <a href="#">Home</a>
-                        <a href="#">Our Lodges</a>
                         <a href="#">Safari Packages</a>
-                        <a href="#">Special Offers</a>
+                        <a href="#">Accommodation</a>
                         <a href="#">Gallery</a>
+                        <a href="#">Special Offers</a>
+                        <a href="#">Kenya Travel Guide</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
-                    <p><i class="fas fa-envelope"></i> info@tabibujaysafari.com</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Olare Motorogi Conservancy, Maasai Mara, Kenya</p>
+                        <p><i class="fas fa-phone"></i> +254 700 194262</p>
+                        <p><i class="fab fa-whatsapp"></i> +254 700 194262</p>
+                        <p><i class="fas fa-envelope"></i> info@tabibujaysafari.com</p>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Tabibu Jay Safari. All rights reserved.</p>
+                <p>&copy; 2023 Tabibu Jay Safari Lodge. All rights reserved. | Proudly Kenyan</p>
             </div>
         </div>
     </footer>
@@ -628,6 +1280,34 @@
                     const tabId = btn.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
                 });
+            });
+            
+            // Expandable card functionality
+            const detailCards = document.querySelectorAll('.detail-card');
+            detailCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Close all other expanded cards
+                    detailCards.forEach(c => {
+                        if (c !== this) {
+                            c.classList.remove('expanded');
+                        }
+                    });
+                    
+                    // Toggle this card
+                    this.classList.toggle('expanded');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '10px 0';
+                    header.style.backgroundColor = 'rgba(26, 71, 42, 0.98)';
+                } else {
+                    header.style.padding = '15px 0';
+                    header.style.backgroundColor = 'rgba(26, 71, 42, 0.95)';
+                }
             });
         });
     </script>
